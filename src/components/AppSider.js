@@ -7,7 +7,7 @@ function AppSider() {
 
   function getDefaultSelectedKeys() {
     const mapPathToMenuKey = {
-      '/home': '1',
+      '/': '1',
       '/categories': '2',
       '/accounts': '3',
       '/settings': '4',
@@ -27,7 +27,7 @@ function AppSider() {
       <Menu theme="dark" mode="inline" defaultSelectedKeys={getDefaultSelectedKeys()}>
 
         <Menu.Item key="1" style={{marginTop: 0}}>
-          <NavLink to="/home">
+          <NavLink to="/">
             <Icon type="user"/>
             <span className="nav-text">Home</span>
           </NavLink>

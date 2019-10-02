@@ -20,7 +20,7 @@ function App() {
           <Header style={{padding: 0}}/>
           <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
 
-            <Route component={Home} path="/home"/>
+            <Route component={Home} exact={true} path="/"/>
             <Route component={Accounts} path="/accounts"/>
             <Route component={Categories} path="/categories"/>
             <Route component={Settings} path="/settings"/>
