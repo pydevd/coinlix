@@ -11,7 +11,6 @@ class AddCategoryForm extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log(values);
       if (err) return;
       const category = {
         name: values.category,
@@ -32,7 +31,7 @@ class AddCategoryForm extends React.Component {
               getFieldDecorator('categoryType', {
                 initialValue: 'outcome',
               })(
-                <Radio.Group defaultValue="outcome" buttonStyle="solid">
+                <Radio.Group buttonStyle="solid">
                   <Radio.Button value="outcome">Outcome</Radio.Button>
                    <Radio.Button value="income">Income</Radio.Button>
                 </Radio.Group>
