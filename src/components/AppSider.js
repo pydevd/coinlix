@@ -21,13 +21,12 @@ function AppSider() {
       style={{
         overflow: 'auto',
         height: '100vh',
-        left: 0,
       }}
     >
       <div className={s.logo}>CoinLix</div>
       <Menu theme="dark" mode="inline" defaultSelectedKeys={getDefaultSelectedKeys()}>
 
-        <Menu.Item key="1">
+        <Menu.Item key="1" style={{marginTop: 0}}>
           <NavLink to="/home">
             <Icon type="user"/>
             <span className="nav-text">Home</span>

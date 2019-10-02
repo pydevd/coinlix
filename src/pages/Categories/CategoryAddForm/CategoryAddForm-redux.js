@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Icon, Input, Radio} from "antd";
+import {Button, Form, Input, Radio} from "antd";
 import {connect} from "react-redux";
 import {addCategory, setActiveAddCategoryType} from "../../../store/actions";
 
@@ -38,7 +38,7 @@ class CategoryAddForm extends React.Component {
     const {getFieldDecorator} = this.props.form;
     return (
       <div>
-        <Form onSubmit={this.onSubmit}>
+        <Form layout="inline" onSubmit={this.onSubmit}>
           <Form.Item>
             {
               getFieldDecorator('categoryType', {
@@ -51,14 +51,13 @@ class CategoryAddForm extends React.Component {
               )
             }
           </Form.Item>
-          <Form.Item>
+          <Form.Item label="Category:">
             {
               getFieldDecorator('category', {
-                rules: [{required: true, message: 'Please, enter category!'}],
+                rules: [{required: true, message: 'Required!'}],
               })(
                 <Input
-                  prefix={<Icon type="plus-circle" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                  placeholder="Category"
+                  placeholder="Category name"
                 />,
               )
             }

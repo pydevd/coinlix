@@ -7,6 +7,7 @@ import Settings from "./pages/Settings";
 import Categories from "./pages/Categories";
 
 import s from "./App.module.css";
+import Accounts from "./pages/Accounts";
 
 const {Header, Content, Footer} = Layout;
 
@@ -20,11 +21,12 @@ function App() {
           <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
 
             <Route component={Home} path="/home"/>
+            <Route component={Accounts} path="/accounts"/>
             <Route component={Categories} path="/categories"/>
             <Route component={Settings} path="/settings"/>
 
           </Content>
-          <Footer>2019(c)</Footer>
+          <Footer className={s.footer}>2019(c)</Footer>
         </Layout>
       </BrowserRouter>
     </Layout>
