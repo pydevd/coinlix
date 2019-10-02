@@ -1,12 +1,14 @@
-import {ADD_CATEGORY} from "./actions";
+import {ADD_CATEGORY, SET_ACTIVE_ADD_CATEGORY_TYPE} from "./actions";
+
 
 const initialState = {
   categories: [
     {name: "Salary", type: "income"},
     {name: "Upwork", type: "income"},
     {name: "Food", type: "outcome"},
-    {name: "C4 Cactus", type: "outcome"}
-  ]
+    {name: "C4 Cactus", type: "outcome"},
+  ],
+  activeAddCategoryType: "outcome"
 };
 
 
@@ -14,6 +16,8 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CATEGORY:
       return {...state, categories: [...state.categories, action.value]};
+    case SET_ACTIVE_ADD_CATEGORY_TYPE:
+      return {...state, activeAddCategoryType: action.value};
     default:
       return state;
   }

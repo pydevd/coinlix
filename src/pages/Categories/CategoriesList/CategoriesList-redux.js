@@ -2,21 +2,26 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Button, Icon, List} from "antd";
 
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories,
+    activeAddCategoryType: state.activeAddCategoryType,
+  }
+};
 
 class CategoriesList extends React.Component {
 
   render() {
-    const {categories, filterByType} = this.props;
-    const filteredCategories = categories.filter(category => category.type === filterByType);
+    const {categories, activeAddCategoryType} = this.props;
     return (
       <List
         size="small"
         bordered
         itemLayout="horizontal"
-        dataSource={filteredCategories}
+        dataSource={categories.filter(category => category.type === activeAddCategoryType)}
         renderItem={item => (
           <List.Item
-            actions={[<Button type="link"><Icon type="delete" /></Button>]}
+            actions={[<Button type="link"><Icon type="delete"/></Button>]}
           >
             {item.name}
           </List.Item>
@@ -26,9 +31,5 @@ class CategoriesList extends React.Component {
     )
   }
 }
-
-const mapStateToProps = (state) => {
-  return {categories: state.categories}
-};
 
 export default connect(mapStateToProps)(CategoriesList);

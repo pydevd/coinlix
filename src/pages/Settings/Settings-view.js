@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-function Settings () {
+function SettingsView () {
   return (
     <div>Settings</div>
   )
 }
 
-export default Settings;
+export default SettingsView;

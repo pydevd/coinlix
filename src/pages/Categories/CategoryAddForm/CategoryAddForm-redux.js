@@ -1,12 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux'
-
 import {Button, Form, Icon, Input, Radio} from "antd";
-import CategoriesList from "./CategoriesList";
-import {addCategory} from "../../store/actions";
+import {connect} from "react-redux";
+import {addCategory, setActiveAddCategoryType} from "../../../store/actions";
 
 
-class AddCategoryForm extends React.Component {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCategory: (category) => {
+      dispatch(addCategory(category))
+    },
+    setActiveAddCategoryType: (categoryType) => {
+      dispatch(setActiveAddCategoryType(categoryType))
+    }
+  }
+};
+
+class CategoryAddForm extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -21,6 +30,10 @@ class AddCategoryForm extends React.Component {
     })
   };
 
+  onCategoryTypeChange = (event) => {
+    this.props.setActiveAddCategoryType(event.target.value);
+  };
+
   render() {
     const {getFieldDecorator} = this.props.form;
     return (
@@ -31,9 +44,9 @@ class AddCategoryForm extends React.Component {
               getFieldDecorator('categoryType', {
                 initialValue: 'outcome',
               })(
-                <Radio.Group buttonStyle="solid">
+                <Radio.Group buttonStyle="solid" onChange={this.onCategoryTypeChange}>
                   <Radio.Button value="outcome">Outcome</Radio.Button>
-                   <Radio.Button value="income">Income</Radio.Button>
+                  <Radio.Button value="income">Income</Radio.Button>
                 </Radio.Group>
               )
             }
@@ -56,21 +69,11 @@ class AddCategoryForm extends React.Component {
             </Button>
           </Form.Item>
         </Form>
-        <CategoriesList filterByType={this.props.form.getFieldValue('categoryType')}/>
       </div>
     )
   }
 }
 
-const WrappedAddCategoryForm = Form.create({name: 'add_category'})(AddCategoryForm);
+const WrappedCategoryAddForm = Form.create({})(CategoryAddForm);
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addCategory: (category) => {
-      dispatch(addCategory(category))
-    }
-  }
-};
-
-export default connect(null, mapDispatchToProps)(WrappedAddCategoryForm);
+export default connect(null, mapDispatchToProps)(WrappedCategoryAddForm);

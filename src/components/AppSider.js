@@ -9,7 +9,8 @@ function AppSider() {
     const mapPathToMenuKey = {
       '/home': '1',
       '/categories': '2',
-      '/settings': '3',
+      '/accounts': '3',
+      '/settings': '4',
     };
 
     return [mapPathToMenuKey[window.location.pathname]];
@@ -20,11 +21,10 @@ function AppSider() {
       style={{
         overflow: 'auto',
         height: '100vh',
-        position: 'fixed',
         left: 0,
       }}
     >
-      <div className={s.logo}/>
+      <div className={s.logo}>CoinLix</div>
       <Menu theme="dark" mode="inline" defaultSelectedKeys={getDefaultSelectedKeys()}>
 
         <Menu.Item key="1">
@@ -42,6 +42,13 @@ function AppSider() {
         </Menu.Item>
 
         <Menu.Item key="3">
+          <NavLink to="/accounts">
+            <Icon type="account-book" />
+            <span className="nav-text">Accounts</span>
+          </NavLink>
+        </Menu.Item>
+
+        <Menu.Item key="4">
           <NavLink to="/settings">
             <Icon type="setting"/>
             <span className="nav-text">Settings</span>

@@ -1,20 +1,22 @@
 import React from 'react';
+import {BrowserRouter, Route} from "react-router-dom";
 import {Layout} from 'antd';
 import AppSider from "./components/AppSider";
-import {BrowserRouter, Route} from "react-router-dom";
-import Home from "./components/Home";
-import Settings from "./components/Settings";
-import Categories from "./components/categories/Categories";
+import Home from "./pages/Home";
+import Settings from "./pages/Settings";
+import Categories from "./pages/Categories";
+
+import s from "./App.module.css";
 
 const {Header, Content, Footer} = Layout;
 
 function App() {
   return (
-    <Layout>
+    <Layout className={s.app}>
       <BrowserRouter>
         <AppSider/>
-        <Layout style={{marginLeft: 200}}>
-          <Header style={{background: '#fff', padding: 0}}/>
+        <Layout>
+          <Header style={{padding: 0}}/>
           <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
 
             <Route component={Home} path="/home"/>
